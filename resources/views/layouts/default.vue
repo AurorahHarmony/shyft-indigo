@@ -1,6 +1,7 @@
 <script setup>
-import NavLink from '../components/navbar/link.vue';
+import NavLink from '../components/navbar/navlink.vue';
 import { ref } from 'vue';
+
 let expandNav = ref(true);
 </script>
 

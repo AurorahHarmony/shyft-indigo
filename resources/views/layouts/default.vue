@@ -1,4 +1,5 @@
 <script setup>
+import NavLink from '../components/navbar/link.vue';
 import { ref } from 'vue';
 let expandNav = ref(true);
 </script>
@@ -24,19 +25,21 @@ let expandNav = ref(true);
       <hr />
       <ul>
         <li>
-          <Link href="/" :class="{ active: $page.component === 'dashboard' }">
-            <div class="sidebar-link">
-              <font-awesome-icon icon="fa-solid fa-house" /> Dashboard
-            </div>
-          </Link>
+          <NavLink
+            href="/"
+            icon="fa-solid fa-house"
+            :class="{ active: $page.component === 'dashboard' }"
+          >
+            Dashboard
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             href="/jobs"
-            :class="{ active: $page.component === 'jobs/index' }"
+            icon="fa-solid fa-wrench"
+            :class="{ active: $page.component.startsWith('jobs') }"
+            >Jobs</NavLink
           >
-            <div class="sidebar-link">Jobs</div>
-          </Link>
         </li>
         <li>
           <hr />
@@ -62,7 +65,7 @@ let expandNav = ref(true);
             @click="expandNav = !expandNav"
             type="button"
           >
-            X
+            <font-awesome-icon icon="fa-solid fa-bars" />
           </button>
 
           <form class="d-flex">

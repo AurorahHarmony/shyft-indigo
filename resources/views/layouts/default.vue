@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue';
 let expandNav = ref(true);
 </script>
@@ -76,7 +76,7 @@ let expandNav = ref(true);
                 role="button"
                 data-bs-toggle="dropdown"
               >
-                A name
+                {{ user.name }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li>
@@ -97,3 +97,12 @@ let expandNav = ref(true);
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    user() {
+      return this.$page.props.auth?.user || false;
+    },
+  },
+};
+</script>

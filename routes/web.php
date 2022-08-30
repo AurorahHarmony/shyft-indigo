@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,9 +10,9 @@ Route::middleware('guest')->group(function() {
 });
 
 Route::middleware('auth')->group(function() {
-    Route::get('/', function () {
-        return inertia('dashboard');
-    });
+    Route::inertia('/', 'dashboard');
+
+    Route::get('/jobs', [JobController::class, 'index']);
 
 });
 

@@ -24,14 +24,17 @@ let expandNav = ref(true);
       <hr />
       <ul>
         <li>
-          <Link href="/">
+          <Link href="/" :class="{ active: $page.component === 'dashboard' }">
             <div class="sidebar-link">
               <font-awesome-icon icon="fa-solid fa-house" /> Dashboard
             </div>
           </Link>
         </li>
         <li>
-          <Link href="/jobs">
+          <Link
+            href="/jobs"
+            :class="{ active: $page.component === 'jobs/index' }"
+          >
             <div class="sidebar-link">Jobs</div>
           </Link>
         </li>

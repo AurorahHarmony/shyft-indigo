@@ -1,5 +1,5 @@
 import { createApp, h } from 'vue';
-import { createInertiaApp, Head } from '@inertiajs/inertia-vue3';
+import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3';
 import { resolvePageComponent } from 'vite-plugin-laravel/inertia';
 
 createInertiaApp({
@@ -9,9 +9,11 @@ createInertiaApp({
         createApp({ render: () => h(app, props) })
             .use(plugin)
             .component('Head', Head)
+            .component('Link', Link)
             .mount(el);
     },
-    title: (title) => 'Shyft' + ((title.trim()) ? ` | ${title}` : ''),
+    title: (title) => 'Shyft' + (title.trim() ? ` | ${title}` : ''),
 });
 
 import '../sass/app.scss';
+import 'bootstrap';

@@ -47,7 +47,10 @@ let expandNav = ref(true);
       </ul>
     </div>
     <div class="main" :class="expandNav ? 'sidebar-expanded' : ''">
-      <nav class="navbar navbar-expand navbar-light bg-light">
+      <nav
+        class="navbar navbar-expand navbar-light bg-light position-sticky"
+        style="top: 0"
+      >
         <div class="container-fluid">
           <button
             class="sidebar-expander"
@@ -88,7 +91,9 @@ let expandNav = ref(true);
           </ul>
         </div>
       </nav>
-      <slot />
+      <div class="p-2">
+        <slot />
+      </div>
     </div>
   </div>
 </template>

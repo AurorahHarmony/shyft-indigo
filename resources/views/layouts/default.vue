@@ -25,7 +25,9 @@ let expandNav = ref(true);
       <ul>
         <li>
           <Link href="/">
-            <div class="sidebar-link">Dashboard</div>
+            <div class="sidebar-link">
+              <font-awesome-icon icon="fa-solid fa-house" /> Dashboard
+            </div>
           </Link>
         </li>
         <li>
@@ -69,6 +71,11 @@ let expandNav = ref(true);
           </form>
 
           <ul class="navbar-nav">
+            <li class="nav-item me-2">
+              <a href="#" class="nav-link h-100 p-0" style="margin-right: 2rem">
+                <font-awesome-icon class="h-100" icon="fa-solid fa-qrcode" />
+              </a>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle text-capitalize"

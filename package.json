@@ -5,14 +5,19 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@types/node": "^18.7.14",
         "@vitejs/plugin-vue": "^3.0.3",
         "@vue/compiler-sfc": "^3.2.37",
+        "path": "^0.12.7",
+        "sass": "^1.54.6",
         "vite": "^3.0.9",
         "vite-plugin-laravel": "^0.2.0-beta.29"
     },
     "dependencies": {
-        "vue": "^3.2.36",
         "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-vue3": "^0.6.0"
+        "@inertiajs/inertia-vue3": "^0.6.0",
+        "@popperjs/core": "^2.11.6",
+        "bootstrap": "^5.2.0",
+        "vue": "^3.2.36"
     }
 }

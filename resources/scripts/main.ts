@@ -10,3 +10,5 @@ createInertiaApp({
 			.mount(el)
 	},
 })
+
+import '../sass/app.scss';

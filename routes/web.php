@@ -14,6 +14,9 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/jobs', [JobController::class, 'index']);
 
+    // Administration Routes.
+    Route::inertia('/admin', 'admin.index');
+
 });
 
 Route::get('/logout', [LoginController::class, 'destroy']);

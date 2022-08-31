@@ -23,16 +23,15 @@ let expandNav = ref(true);
           height="40"
         />
       </div>
-      <hr />
+      <hr class="mb-2" />
       <ul>
         <li>
           <NavLink
             href="/"
             icon="fa-solid fa-house"
             :class="{ active: $page.component === 'dashboard' }"
+            >Dashboard</NavLink
           >
-            Dashboard
-          </NavLink>
         </li>
         <li>
           <NavLink
@@ -43,7 +42,15 @@ let expandNav = ref(true);
           >
         </li>
         <li>
-          <hr />
+          <hr class="my-2" />
+        </li>
+        <li>
+          <NavLink
+            href="/admin"
+            icon="fa-solid fa-gears"
+            :class="{ active: $page.component.startsWith('admin') }"
+            >Admin</NavLink
+          >
         </li>
         <li>
           <button

@@ -6,8 +6,9 @@ const props = defineProps({
 </script>
 <template>
   <Link :href="href">
-    <div class="sidebar-link">
-      <font-awesome-icon :icon="icon" /> <span class="text"><slot /></span>
+    <div class="sidebar-link my-1">
+      <font-awesome-icon :icon="icon" class="me-2" />
+      <span class="text"><slot /></span>
     </div>
   </Link>
 </template>

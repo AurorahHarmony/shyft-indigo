@@ -64,7 +64,12 @@ let expandNav = ref(true);
     </div>
     <div class="main" :class="expandNav ? 'sidebar-expanded' : ''">
       <nav
-        class="navbar navbar-expand navbar-light bg-light position-sticky"
+        class="
+          navbar navbar-expand navbar-light
+          bg-light
+          position-sticky
+          border-bottom
+        "
         style="top: 0"
       >
         <div class="container-fluid">

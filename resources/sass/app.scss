@@ -12,6 +12,11 @@ $font-family-base: 'Cairo', sans-serif;
     cursor: pointer;
 }
 
+html,
+body {
+    background-color: #f3f6ff;
+}
+
 // Sidebar
 .sidebar {
     padding: 1rem;
@@ -98,8 +103,7 @@ $font-family-base: 'Cairo', sans-serif;
 
 .main {
     transition-duration: 250ms;
-    // background-color: #183152;
-    background-color: #d3d9e1;
+    background-color: #f3f6ff;
     min-height: 100vh;
 }
 

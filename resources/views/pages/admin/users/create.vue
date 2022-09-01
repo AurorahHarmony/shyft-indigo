@@ -1,7 +1,10 @@
 <script setup>
 import ContentCard from '../../../components/content-card.vue';
-</script>
 
+defineProps({
+  user: Object,
+});
+</script>
 <template layout>
   <div>
     <Link href="/admin/users" class="btn btn-primary mb-2">&lt; All users</Link>
@@ -18,7 +21,7 @@ import ContentCard from '../../../components/content-card.vue';
                   disabled
                   class="form-control"
                   id="name"
-                  value="name"
+                  :value="user.name"
                 />
               </div>
             </div>
@@ -32,7 +35,7 @@ import ContentCard from '../../../components/content-card.vue';
                   disabled
                   class="form-control"
                   id="username"
-                  value="username"
+                  :value="user.username"
                 />
               </div>
             </div>
@@ -44,7 +47,7 @@ import ContentCard from '../../../components/content-card.vue';
                   disabled
                   class="form-control"
                   id="email"
-                  value="email@email.com"
+                  :value="user.email"
                 />
               </div>
             </div>

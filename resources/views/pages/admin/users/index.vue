@@ -46,7 +46,9 @@ defineProps({
       </table>
 
       <div class="px-1 text-center mb-2">
-        <button class="btn btn-outline-primary btn-sm">+ Create User</button>
+        <Link href="/admin/users/create" class="btn btn-outline-primary btn-sm">
+          + Create User
+        </Link>
       </div>
     </div>
   </div>

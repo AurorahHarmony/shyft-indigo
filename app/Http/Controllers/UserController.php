@@ -22,6 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        return inertia('admin.users.create');
     }
 
     /**

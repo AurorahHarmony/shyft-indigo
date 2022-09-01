@@ -104,7 +104,18 @@ let expandNav = ref(true);
               >
                 {{ user.name }}
               </a>
-              <ul class="dropdown-menu dropdown-menu-end">
+              <ul class="dropdown-menu dropdown-menu-end text-end">
+                <li>
+                  <Link class="dropdown-item" :href="`/admin/users/${user.id}`"
+                    >My Account</Link
+                  >
+                </li>
+                <li>
+                  <Link class="dropdown-item" href="/admin/users"
+                    >Administration</Link
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
                 <li>
                   <div class="px-2">
                     <Link href="/logout" class="btn btn-danger btn-sm w-100">
@@ -117,7 +128,7 @@ let expandNav = ref(true);
           </ul>
         </div>
       </nav>
-      <div class="p-2">
+      <div class="py-2 container-fluid">
         <slot />
       </div>
     </div>

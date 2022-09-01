@@ -8,7 +8,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return inertia('admin.users.index');
+        $users = User::all(['id', 'name']);
+        return inertia('admin.users.index', [
+            'users' => $users,
+        ]);
     }
     public function create()
     {

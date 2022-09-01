@@ -1,3 +1,8 @@
+<script setup>
+defineProps({
+  users: Array,
+});
+</script>
 <template layout>
   <div>
     <ul class="nav nav-tabs">
@@ -26,11 +31,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="index in 20" :key="index">
-            <th scope="row">A Name</th>
+          <tr v-for="user in users" :key="user.id">
+            <th scope="row">{{ user.name }}</th>
             <td class="text-muted">10:45pm, 4th January 2020</td>
             <td class="text-end">
-              <button class="btn btn-primary btn-sm">View</button>
+              <Link
+                :href="`/admin/users/${user.id}`"
+                class="btn btn-primary btn-sm"
+                >View</Link
+              >
             </td>
           </tr>
         </tbody>

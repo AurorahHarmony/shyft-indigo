@@ -37,7 +37,7 @@ class UserController extends Controller
     public function show()
     {
         $user = User::where('id', request()->id)->firstOrFail(['id', 'name', 'username', 'email']);
-        return inertia('admin.users.create', [
+        return inertia('admin.users.show', [
             'user' => $user,
         ]);
     }

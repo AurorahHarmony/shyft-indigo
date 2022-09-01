@@ -1,7 +1,7 @@
 <script setup>
 import '../../../sass/backgrounds.scss';
 import { useForm } from '@inertiajs/inertia-vue3';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const form = useForm({
   username: null,
@@ -9,6 +9,11 @@ const form = useForm({
 });
 
 let loading = ref(false);
+let hasError = computed(() => {
+  return (
+    form.errors.username !== undefined || form.errors.password !== undefined
+  );
+});
 
 const submit = () => {
   form.post('/login', {
@@ -26,13 +31,16 @@ const submit = () => {
     <div class="form-signin bg-white rounded shadow">
       <form class="text-center" @submit.prevent="submit">
         <img class="mb-2" src="/image/shyft-blue.png" alt="" height="57" />
-        <div class="text-danger" v-if="form.errors.email">
-          {{ form.errors.email }}
+        <div
+          class="text-danger"
+          v-if="form.errors.username || form.errors.password"
+        >
+          {{ form.errors.username || form.errors.password }}
         </div>
         <input
           type="text"
           class="form-control"
-          :class="{ 'is-invalid': form.errors.email !== undefined }"
+          :class="{ 'is-invalid': hasError }"
           placeholder="Username"
           autofocus
           autocapitalize="none"
@@ -42,7 +50,7 @@ const submit = () => {
         <input
           type="password"
           class="form-control"
-          :class="{ 'is-invalid': form.errors.email !== undefined }"
+          :class="{ 'is-invalid': hasError }"
           placeholder="Password"
           autocapitalize="none"
           v-model="form.password"

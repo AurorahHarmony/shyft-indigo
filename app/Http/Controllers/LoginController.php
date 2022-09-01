@@ -26,8 +26,8 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Invalid credentials',
-        ])->onlyInput('email');
+            'username' => 'Invalid credentials',
+        ])->onlyInput('username');
     }
 
     public function destroy()

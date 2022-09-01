@@ -18,7 +18,12 @@ Route::middleware('auth')->group(function () {
     // Administration Routes.
     Route::redirect('/admin', '/admin/users');
     Route::get('/admin/users', [UserController::class, 'index']);
-    Route::get('/admin/users/{id}', [UserController::class, 'create']);
+    Route::get('/admin/users/create', [UserController::class, 'create']);
+    // Route::post('/admin/users', [UserController::class, 'store']);
+    Route::get('/admin/users/{id}', [UserController::class, 'show']);
+    // Route::get('/admin/users/{id}/edit', [UserController::class, 'edit']);
+    // Route::patch('/admin/users/{id}', [UserController::class, 'update']);
+    // Route::delete('/admin/users/{id}', [UserController::class, 'destroy']);
 });
 
 Route::get('/logout', [LoginController::class, 'destroy']);

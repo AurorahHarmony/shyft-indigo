@@ -1,13 +1,24 @@
 <script setup>
 import '../../../sass/backgrounds.scss';
 import { useForm } from '@inertiajs/inertia-vue3';
+import { ref } from 'vue';
 
 const form = useForm({
   username: null,
   password: null,
 });
+
+let loading = ref(false);
+
 const submit = () => {
-  form.post('/login');
+  form.post('/login', {
+    onStart: () => {
+      loading.value = true;
+    },
+    onFinish: () => {
+      loading.value = false;
+    },
+  });
 };
 </script>
 <template layout="no-wrapper">
@@ -36,7 +47,17 @@ const submit = () => {
           autocapitalize="none"
           v-model="form.password"
         />
-        <button class="w-100 btn btn-lg btn-primary">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" :disabled="loading">
+          <span v-if="loading">
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            Loading
+          </span>
+          <span v-else>Sign in</span>
+        </button>
       </form>
     </div>
   </div>

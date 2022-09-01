@@ -7,14 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function create() {
+    public function create()
+    {
         return inertia('auth.login');
     }
 
-    public function authenticate() {
+    public function authenticate()
+    {
         $credentials = request()->validate([
             'username' => ['required'],
-            'password' => 'required'
+            'password' => ['required']
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -28,7 +30,8 @@ class LoginController extends Controller
         ])->onlyInput('email');
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         auth()->logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();

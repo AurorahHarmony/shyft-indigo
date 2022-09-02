@@ -1,5 +1,6 @@
 <script setup>
 import ContentCard from '../../../components/content-card.vue';
+import HorizontalInput from '@/views/components/form/horizontal-input.vue';
 
 defineProps({
   user: Object,
@@ -13,62 +14,30 @@ defineProps({
         <ContentCard class="p-3">
           <p class="h4">Person's name</p>
           <form>
-            <div class="row mb-2">
-              <label for="name" class="col-sm-3 col-form-label"> Name </label>
-              <div class="col-10 col-sm-8">
-                <input
-                  type="text"
-                  disabled
-                  class="form-control"
-                  id="name"
-                  :value="user.name"
-                />
-              </div>
-            </div>
-            <div class="row mb-2">
-              <label for="username" class="col-sm-3 col-form-label">
-                Username
-              </label>
-              <div class="col-sm-8">
-                <input
-                  type="text"
-                  disabled
-                  class="form-control"
-                  id="username"
-                  :value="user.username"
-                />
-              </div>
-            </div>
-            <div class="row mb-2">
-              <label for="email" class="col-sm-3 col-form-label">Email</label>
-              <div class="col-sm-8">
-                <input
-                  type="email"
-                  disabled
-                  class="form-control"
-                  id="email"
-                  :value="user.email"
-                />
-              </div>
-            </div>
+            <HorizontalInput
+              label="Name"
+              v-model="user.name"
+              :disabled="true"
+            />
+            <HorizontalInput
+              label="Username"
+              v-model="user.username"
+              :disabled="true"
+            />
+            <HorizontalInput
+              label="Email"
+              type="email"
+              v-model="user.email"
+              :disabled="true"
+            />
             <hr />
-            <div class="row mb-2">
-              <label for="password" class="col-sm-3 col-form-label">
-                Password
-              </label>
-              <div class="col-sm-8">
-                <input
-                  type="password"
-                  disabled
-                  class="form-control"
-                  id="password"
-                  value="********"
-                />
-              </div>
-              <div class="col-1 d-flex align-items-center">
-                <a href="#" class="text-decoration-none">Edit</a>
-              </div>
-            </div>
+            <HorizontalInput
+              label="Password"
+              type="password"
+              modelValue="********"
+              :disabled="true"
+              :canEdit="true"
+            />
           </form>
         </ContentCard>
       </div>

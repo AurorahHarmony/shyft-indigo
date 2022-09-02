@@ -5,7 +5,7 @@ defineProps({
 </script>
 <template>
   <button
-    class="w-100 btn"
+    class="btn"
     :class="$attrs.class ? $attrs.class : 'btn-primary'"
     :disabled="loading"
   >

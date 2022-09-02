@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -30,6 +31,20 @@ class UserController extends Controller
      */
     public function store()
     {
+        $formFields = request()->validate([
+            'username' => ['required', 'alpha_dash', 'min:3', 'max:15', Rule::unique('users', 'username')],
+            'name' => ['required', 'min:3', 'max:255'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required', 'confirmed', 'min:6', 'max:128'],
+        ]);
+
+        // Hash password.
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        // Create user record.
+        $user = User::create($formFields);
+
+        return redirect('/admin/users/' . $user->id);
     }
 
     /**

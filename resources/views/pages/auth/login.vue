@@ -2,6 +2,7 @@
 import '../../../sass/backgrounds.scss';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ref, computed } from 'vue';
+import LoaderButton from '@/views/components/form/loader-button.vue';
 
 const form = useForm({
   username: null,
@@ -55,17 +56,9 @@ const submit = () => {
           autocapitalize="none"
           v-model="form.password"
         />
-        <button class="w-100 btn btn-lg btn-primary" :disabled="loading">
-          <span v-if="loading">
-            <span
-              class="spinner-border spinner-border-sm"
-              role="status"
-              aria-hidden="true"
-            ></span>
-            Loading
-          </span>
-          <span v-else>Sign in</span>
-        </button>
+        <LoaderButton :loading="loading" class="btn-lg btn-primary w-100">
+          Sign in
+        </LoaderButton>
       </form>
     </div>
   </div>

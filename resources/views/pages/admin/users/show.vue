@@ -1,10 +1,16 @@
 <script setup>
 import ContentCard from '../../../components/content-card.vue';
 import HorizontalInput from '@/views/components/form/horizontal-input.vue';
+import VerticalInput from '@/views/components/form/vertical-input.vue';
+import LoaderButton from '@/views/components/form/loader-button.vue';
+
+import { ref } from 'vue';
 
 defineProps({
   user: Object,
 });
+
+let editingPassword = ref(false);
 </script>
 <template layout>
   <div>
@@ -13,31 +19,35 @@ defineProps({
       <div class="col-md-6 mb-2">
         <ContentCard class="p-3">
           <p class="h4">Person's name</p>
-          <form>
-            <HorizontalInput
-              label="Name"
-              v-model="user.name"
-              :disabled="true"
-            />
-            <HorizontalInput
-              label="Username"
-              v-model="user.username"
-              :disabled="true"
-            />
-            <HorizontalInput
-              label="Email"
-              type="email"
-              v-model="user.email"
-              :disabled="true"
-            />
-            <hr />
-            <HorizontalInput
-              label="Password"
-              type="password"
-              modelValue="********"
-              :disabled="true"
-              :canEdit="true"
-            />
+          <HorizontalInput label="Name" v-model="user.name" :disabled="true" />
+          <HorizontalInput
+            label="Username"
+            v-model="user.username"
+            :disabled="true"
+          />
+          <HorizontalInput
+            label="Email"
+            type="email"
+            v-model="user.email"
+            :disabled="true"
+          />
+          <hr />
+          <HorizontalInput
+            label="Password"
+            type="password"
+            modelValue="********"
+            :disabled="true"
+            :canEdit="true"
+            v-if="editingPassword == false"
+            @enableEdit="editingPassword = true"
+          />
+          <form v-if="editingPassword" @submit.prevent="">
+            <VerticalInput label="Old Password" type="password" />
+            <VerticalInput label="New Password" type="password" />
+            <VerticalInput label="Confirm password" type="password" />
+            <div class="text-end">
+              <LoaderButton>Save</LoaderButton>
+            </div>
           </form>
         </ContentCard>
       </div>

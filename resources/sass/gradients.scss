@@ -1,0 +1,16 @@
+.gradient-sunny {
+    background: rgb(255, 136, 0);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 136, 0, 1) 0%,
+        rgba(255, 197, 0, 1) 100%
+    );
+}
+.gradient-latenight {
+    background: rgb(3 7 60);
+    background: linear-gradient(0deg, rgb(3 7 60) 0%, rgb(29 53 110) 100%);
+}
+.gradient-bluesky {
+    background: rgb(0 58 131);
+    background: linear-gradient(0deg, rgb(0 58 131) 0%, rgb(83 174 253) 100%);
+}

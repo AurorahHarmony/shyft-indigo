@@ -1,4 +1,6 @@
 @import './fonts.scss';
+@import './gradients.scss';
+
 $font-family-base: 'Cairo', sans-serif;
 
 @import '~bootstrap/scss/bootstrap';
@@ -129,25 +131,6 @@ body {
         &.sidebar-expanded {
             margin-left: 300px;
         }
-    }
-}
-
-//Gradients
-.gradient-sunny {
-    background: rgb(255, 136, 0);
-    background: linear-gradient(
-        0deg,
-        rgba(255, 136, 0, 1) 0%,
-        rgba(255, 197, 0, 1) 100%
-    );
-}
-
-//Index Stuff
-.dashboard-welcome {
-    .date-badge {
-        background: rgb(0 0 0 / 25%);
-        padding: 0.75rem 1rem;
-        border-radius: 4px;
     }
 }
 

@@ -1,8 +1,19 @@
 <script setup>
 import NavLink from '../components/navbar/navlink.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
-let expandNav = ref(true);
+let expandNav = ref(false);
+onMounted(() => {
+  const storedNavState = localStorage.getItem('expandNav');
+  if (storedNavState === 'true' && window.innerWidth > 991) {
+    expandNav.value = true;
+  }
+});
+
+const toggleNav = () => {
+  expandNav.value = !expandNav.value;
+  localStorage.setItem('expandNav', expandNav.value);
+};
 </script>
 
 <template>
@@ -55,7 +66,7 @@ let expandNav = ref(true);
         <li>
           <button
             class="btn btn-primary w-100 mt-1 d-lg-none"
-            @click="expandNav = !expandNav"
+            @click="toggleNav"
           >
             Close
           </button>
@@ -73,11 +84,7 @@ let expandNav = ref(true);
         style="top: 0"
       >
         <div class="container-fluid">
-          <button
-            class="sidebar-expander"
-            @click="expandNav = !expandNav"
-            type="button"
-          >
+          <button class="sidebar-expander" @click="toggleNav" type="button">
             <font-awesome-icon icon="fa-solid fa-bars" />
           </button>
 

@@ -14,12 +14,11 @@ const handleInput = (e) => {
 </script>
 <template>
   <div class="mb-2">
-    <label :for="id" class="form-label" v-if="label">{{ label }}</label>
+    <label class="form-label" v-if="label">{{ label }}</label>
     <input
       :type="type"
       class="form-control"
       :class="{ 'is-invalid': error }"
-      :id="id"
       :value="modelValue"
       @input="handleInput"
     />

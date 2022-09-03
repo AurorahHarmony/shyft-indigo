@@ -12,6 +12,7 @@ const props = defineProps({
 });
 
 const passwordForm = useForm({
+  field: 'password',
   password: null,
   newpassword: null,
   newpassword_confirmation: null,
@@ -22,6 +23,7 @@ let editingPasswordLoading = ref(false);
 
 const cancelEditPassword = () => {
   passwordForm.reset();
+  passwordForm.clearErrors();
   editingPassword.value = false;
 };
 
@@ -88,7 +90,11 @@ const patchPassword = () => {
               :error="passwordForm.errors.newpassword_confirmation"
             />
             <div class="text-end">
-              <button class="btn btn-light me-2" @click="cancelEditPassword">
+              <button
+                class="btn btn-light me-2"
+                @click="cancelEditPassword"
+                type="button"
+              >
                 Cancel
               </button>
               <LoaderButton :loading="editingPasswordLoading">

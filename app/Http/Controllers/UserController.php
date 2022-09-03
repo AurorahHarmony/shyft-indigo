@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -70,8 +71,25 @@ class UserController extends Controller
      */
     public function update()
     {
+
+        $user = User::where('id', request()->id)->firstOrFail();
+
         // If the password is being updated
-        if (request()->password) {
+        if (request()->field == 'password') {
+            $formFields = request()->validate([
+                'password' => ['required'],
+                'newpassword' => ['required', 'confirmed', 'min:6', 'max:128'],
+            ]);
+
+            // If old password is incorrect.
+            if (!Hash::check($formFields['password'], $user->password)) {
+                return back()->withErrors([
+                    'password' => 'Invalid password',
+                ])->onlyInput('password');
+            }
+
+            $user['password'] = bcrypt($formFields['newpassword']);
+            $user->save();
         }
 
         return response('', 200);

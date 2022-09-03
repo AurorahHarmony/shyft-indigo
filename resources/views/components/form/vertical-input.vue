@@ -13,7 +13,7 @@ const handleInput = (e) => {
 };
 </script>
 <template>
-  <div>
+  <div class="mb-2">
     <label :for="id" class="form-label" v-if="label">{{ label }}</label>
     <input
       :type="type"

@@ -32,44 +32,35 @@ const submit = () => {
       <ContentCard>
         <p class="h4">Create a new user</p>
         <form @submit.prevent="submit">
-          <div class="mb-2">
-            <VerticalInput
-              label="Username"
-              v-model="form.username"
-              :error="form.errors.username"
-            />
-          </div>
-          <div class="mb-2">
-            <VerticalInput
-              label="Name"
-              v-model="form.name"
-              :error="form.errors.name"
-            />
-          </div>
-          <div class="mb-2">
-            <VerticalInput
-              label="Email"
-              type="email"
-              v-model="form.email"
-              :error="form.errors.email"
-            />
-          </div>
-          <div class="mb-2">
-            <VerticalInput
-              label="Password"
-              type="password"
-              v-model="form.password"
-              :error="form.errors.password"
-            />
-          </div>
-          <div class="mb-3">
-            <VerticalInput
-              label="Confirm password"
-              type="password"
-              v-model="form.password_confirmation"
-              :error="form.errors.password_confirmation"
-            />
-          </div>
+          <VerticalInput
+            label="Username"
+            v-model="form.username"
+            :error="form.errors.username"
+          />
+          <VerticalInput
+            label="Name"
+            v-model="form.name"
+            :error="form.errors.name"
+          />
+          <VerticalInput
+            label="Email"
+            type="email"
+            v-model="form.email"
+            :error="form.errors.email"
+          />
+          <VerticalInput
+            label="Password"
+            type="password"
+            v-model="form.password"
+            :error="form.errors.password"
+          />
+          <VerticalInput
+            class="mb-3"
+            label="Confirm password"
+            type="password"
+            v-model="form.password_confirmation"
+            :error="form.errors.password_confirmation"
+          />
 
           <div class="d-flex justify-content-between">
             <Link href="/admin/users" class="btn btn-outline-danger me-2">

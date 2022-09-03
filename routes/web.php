@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/users', [UserController::class, 'store']);
     Route::get('/admin/users/{id}', [UserController::class, 'show']);
     // Route::get('/admin/users/{id}/edit', [UserController::class, 'edit']);
-    // Route::patch('/admin/users/{id}', [UserController::class, 'update']);
+    Route::patch('/admin/users/{id}', [UserController::class, 'update']);
     // Route::delete('/admin/users/{id}', [UserController::class, 'destroy']);
 });
 

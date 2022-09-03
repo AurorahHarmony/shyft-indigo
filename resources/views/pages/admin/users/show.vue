@@ -5,12 +5,39 @@ import VerticalInput from '@/views/components/form/vertical-input.vue';
 import LoaderButton from '@/views/components/form/loader-button.vue';
 
 import { ref } from 'vue';
+import { useForm } from '@inertiajs/inertia-vue3';
 
-defineProps({
+const props = defineProps({
   user: Object,
 });
 
+const passwordForm = useForm({
+  password: null,
+  newpassword: null,
+  newpassword_confirmation: null,
+});
+
 let editingPassword = ref(false);
+let editingPasswordLoading = ref(false);
+
+const cancelEditPassword = () => {
+  passwordForm.reset();
+  editingPassword.value = false;
+};
+
+const patchPassword = () => {
+  passwordForm.patch(`/admin/users/${props.user.id}`, {
+    onStart: () => {
+      editingPasswordLoading.value = true;
+    },
+    onFinish: () => {
+      editingPasswordLoading.value = false;
+    },
+    onSuccess: () => {
+      editingPassword.value = false;
+    },
+  });
+};
 </script>
 <template layout>
   <div>
@@ -41,12 +68,32 @@ let editingPassword = ref(false);
             v-if="editingPassword == false"
             @enableEdit="editingPassword = true"
           />
-          <form v-if="editingPassword" @submit.prevent="">
-            <VerticalInput label="Old Password" type="password" />
-            <VerticalInput label="New Password" type="password" />
-            <VerticalInput label="Confirm password" type="password" />
+          <form v-if="editingPassword" @submit.prevent="patchPassword">
+            <VerticalInput
+              label="Old Password"
+              type="password"
+              v-model="passwordForm.password"
+              :error="passwordForm.errors.password"
+            />
+            <VerticalInput
+              label="New Password"
+              type="password"
+              v-model="passwordForm.newpassword"
+              :error="passwordForm.errors.newpassword"
+            />
+            <VerticalInput
+              label="Confirm password"
+              type="password"
+              v-model="passwordForm.newpassword_confirmation"
+              :error="passwordForm.errors.newpassword_confirmation"
+            />
             <div class="text-end">
-              <LoaderButton>Save</LoaderButton>
+              <button class="btn btn-light me-2" @click="cancelEditPassword">
+                Cancel
+              </button>
+              <LoaderButton :loading="editingPasswordLoading">
+                Save
+              </LoaderButton>
             </div>
           </form>
         </ContentCard>

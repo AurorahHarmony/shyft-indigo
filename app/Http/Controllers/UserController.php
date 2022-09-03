@@ -70,6 +70,11 @@ class UserController extends Controller
      */
     public function update()
     {
+        // If the password is being updated
+        if (request()->password) {
+        }
+
+        return response('', 200);
     }
 
     /**

@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		@vite
 	</head>
-	<body class="antialiased bg-gray-900">
+	<body>
 		@inertia
 	</body>
 </html>

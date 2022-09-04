@@ -1,5 +1,6 @@
 <script setup>
-import NavLink from '../components/navbar/navlink.vue';
+import NavLink from '@/views/components/navbar/navlink.vue';
+import GlobalSearch from '@/views/components/navbar/global-search.vue';
 import { onMounted, ref } from 'vue';
 
 let expandNav = ref(false);
@@ -88,13 +89,7 @@ const toggleNav = () => {
             <font-awesome-icon icon="fa-solid fa-bars" />
           </button>
 
-          <form class="d-flex">
-            <input
-              class="form-control me-2 font-code"
-              type="search"
-              placeholder="Search"
-            />
-          </form>
+          <GlobalSearch />
 
           <ul class="navbar-nav">
             <li class="nav-item me-2">

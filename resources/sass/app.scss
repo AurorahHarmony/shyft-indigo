@@ -137,3 +137,45 @@ body {
 .form-label {
     margin-bottom: 0.125rem;
 }
+
+// Global Searchbar
+.autocomplete {
+    position: relative;
+}
+.autocomplete input {
+    position: relative;
+    z-index: 50;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+.autocomplete-items {
+    @extend .pt-1;
+
+    position: absolute;
+    z-index: 40;
+    top: calc(100% - 5px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 0 0 0.375rem 0.375rem;
+
+    .autocomplete-item {
+        @extend .px-2;
+        @extend .py-1;
+        cursor: pointer;
+
+        &:hover {
+            @extend .bg-light;
+        }
+    }
+
+    .autocomplete-category {
+        @extend .px-2;
+        @extend .pt-1;
+        font-weight: bolder;
+        font-size: 0.9rem;
+    }
+}

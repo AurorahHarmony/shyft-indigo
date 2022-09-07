@@ -167,8 +167,13 @@ body {
         @extend .py-1;
         cursor: pointer;
 
-        &:hover {
+        &:hover:not(.active) {
             @extend .bg-light;
+        }
+
+        &.active {
+            @extend .bg-primary;
+            @extend .text-white;
         }
     }
 
